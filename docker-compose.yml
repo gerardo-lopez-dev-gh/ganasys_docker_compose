@@ -3,7 +3,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: ganasys:123
+      dockerfile: ganasys-docker:123
     ports:
       - "5050:5000"
     environment:
