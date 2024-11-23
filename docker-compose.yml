@@ -6,6 +6,8 @@ services:
       dockerfile: 172.21.0.3:8084/ganasys-docker:123
     ports:
       - "5050:5000"
+    env_file:
+      - ./tesis_tesis_asi_rama_carmen/.env      
     environment:
       - SECRET_KEY=${SECRET_KEY}
       - JWT_KEY=${JWT_KEY}
