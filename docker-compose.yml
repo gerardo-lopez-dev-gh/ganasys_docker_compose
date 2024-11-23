@@ -1,9 +1,7 @@
 version: "3.9"
 services:
   web:
-    build:
-      context: .
-      dockerfile: 172.21.0.3:8084/ganasys-docker:123
+    image: 172.21.0.3:8084/ganasys-docker:123
     ports:
       - "5050:5000"   
     environment:
