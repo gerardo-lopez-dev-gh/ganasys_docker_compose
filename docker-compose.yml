@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    image: 172.21.0.3:8084/ganasys-docker:20241123_533268b
+    image: 172.21.0.3:8084/ganasys-docker:20241124_533268b
     ports:
       - "5050:5000"   
     env_file:
