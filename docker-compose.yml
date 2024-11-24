@@ -1,22 +1,35 @@
-version: "3.9"
 services:
-  web:
-    image: 172.21.0.3:8084/ganasys-docker:20241124_533268b
-    ports:
-      - "5050:5000"   
-    env_file:
-      - .env
-    depends_on:
-      - db
-
   db:
-    image: postgres:15
-    env_file:
-      - .env
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: carmenresquin
+      POSTGRES_DB: thesis
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  web:
+    build:
+      image: 172.21.0.3:8084/ganasys-docker:20241124_533268b
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: src
+      FLASK_ENV: development
+      SECRET_KEY: B!1w8*NAt1T^%kvhUI*S^_
+      POSTGRESQL_HOST: db  # Nombre del servicio Docker para PostgreSQL
+      POSTGRESQL_PORT: 5432
+      POSTGRESQL_USER: postgres
+      POSTGRESQL_PASSWORD: carmenresquin
+      POSTGRESQL_DB: thesis
+      JWT_KEY: D5*F?_1?-d$f*1
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
 volumes:
   postgres_data:
+
