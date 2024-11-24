@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   db:
     image: postgres:15
@@ -11,12 +13,12 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   web:
-    image: 172.21.0.3:8084/ganasys-docker:20241124_d3ae5bd
+    image: my-app:latest  # Usa la imagen que construiste con el Dockerfile
     ports:
-      - "5050:5000"  # Mapea el puerto externo 5050 al 5000 interno del contenedor
+      - "5050:5000"  # Mapea el puerto externo 5050 al 5000 interno
     environment:
       FLASK_APP: src
-      FLASK_ENV: development
+      FLASK_ENV: production  # Cambia a producción
       SECRET_KEY: B!1w8*NAt1T^%kvhUI*S^_
       POSTGRESQL_HOST: db
       POSTGRESQL_PORT: 5432
@@ -26,8 +28,6 @@ services:
       JWT_KEY: D5*F?_1?-d$f*1
     depends_on:
       - db
-    volumes:
-      - .:/app  # Si necesitas acceso local al código
 
 volumes:
   postgres_data:
