@@ -13,12 +13,12 @@ services:
   web:
     image: 172.21.0.3:8084/ganasys-docker:20241124_d3ae5bd
     ports:
-      - "5050:5000"
+      - "5050:5000"  # Mapea el puerto externo 5050 al 5000 interno del contenedor
     environment:
       FLASK_APP: src
       FLASK_ENV: development
       SECRET_KEY: B!1w8*NAt1T^%kvhUI*S^_
-      POSTGRESQL_HOST: db  # Nombre del servicio Docker para PostgreSQL
+      POSTGRESQL_HOST: db
       POSTGRESQL_PORT: 5432
       POSTGRESQL_USER: postgres
       POSTGRESQL_PASSWORD: carmenresquin
@@ -27,8 +27,7 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/app
+      - .:/app  # Si necesitas acceso local al código
 
 volumes:
   postgres_data:
-
