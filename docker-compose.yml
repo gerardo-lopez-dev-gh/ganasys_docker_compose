@@ -15,7 +15,7 @@ services:
   web:
     image: 172.21.0.3:8084/ganasys-tesis_asi_rama_carmen:20241201_8c6d698
     ports:
-      - "5050:5000"  # Mapea el puerto externo 5050 al 5000 interno
+      - "5050:5050"  # Mapea el puerto externo 5050 al 5000 interno
     environment:
       FLASK_APP: src
       FLASK_ENV: production  # Cambia a producción
