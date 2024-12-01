@@ -13,7 +13,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   web:
-    image: 172.21.0.3:8084/ganasys-tesis_asi_rama_carmen:20241124_5e3e8c2
+    image: 172.21.0.3:8084/ganasys-tesis_asi_rama_carmen:20241201_8c6d698
     ports:
       - "5050:5000"  # Mapea el puerto externo 5050 al 5000 interno
     environment:
